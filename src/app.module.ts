@@ -5,6 +5,7 @@ import { MiddlewareConsumer } from '@nestjs/common';
 import { LoggerMiddleware } from './middlewares/logger.middleware';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
+import { TodoModule } from './todo/todo.module';
 @Module({
   imports: [
     ConfigModule.forRoot(),
@@ -19,6 +20,7 @@ import { ConfigModule } from '@nestjs/config';
       synchronize: false,
       keepConnectionAlive: true,
     }),
+    TodoModule,
   ],
   controllers: [AppController],
   providers: [AppService],

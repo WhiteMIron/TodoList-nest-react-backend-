@@ -5,21 +5,21 @@ declare const module: any;
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-
+  console.log(process.env.DB_USERNAME);
   const config = new DocumentBuilder()
-  .setTitle('TodoList API')
-  .setDescription('This is a TodoList Api.')
-  .setVersion('1.0').addCookieAuth('connect.sid')
-  .build();
+    .setTitle('TodoList API')
+    .setDescription('This is a TodoList Api.')
+    .setVersion('1.0')
+    .addCookieAuth('connect.sid')
+    .build();
 
-  const document = SwaggerModule.createDocument(app,config)
-  SwaggerModule.setup('api',app,document)
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('api', app, document);
   await app.listen(3000);
 
   if (module.hot) {
     module.hot.accept();
     module.hot.dispose(() => app.close());
   }
-
 }
 bootstrap();

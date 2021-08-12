@@ -1,4 +1,10 @@
+import { IsString } from "class-validator";
+
 export class CreateTodoDto{
+    @IsString()
     title :string;
-    desc : string;    
+
+    @IsString()
+    desc : string;  
+    
 }   

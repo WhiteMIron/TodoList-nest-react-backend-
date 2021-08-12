@@ -6,6 +6,7 @@ import { LoggerMiddleware } from './middlewares/logger.middleware';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { TodoModule } from './todo/todo.module';
+import { Todo } from './todo/entities/todo.entity'
 @Module({
   imports: [
     ConfigModule.forRoot(),
@@ -16,9 +17,9 @@ import { TodoModule } from './todo/todo.module';
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DATABASE,
-      entities: [],
-      synchronize: false,
-      keepConnectionAlive: true,
+      entities: [Todo],
+      synchronize: true,
+      keepConnectionAlive: true
     }),
     TodoModule,
   ],
